@@ -1,9 +1,84 @@
-.header{
-    background-color: aquamarine;
+@import "../../global.scss";
+.header {
+    background-color: #fff;
     height: 70px;
     position: sticky;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 9;
+    color: $mainColor;
+    transition: all 1s ease;
+    .container {
+        height: 100%;
+    }
+    .topbar-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: inherit;
+        .left {
+            display: flex;
+            align-items: center;
+            padding: 10px 0;
+            color: inherit;
+            .logo {
+                font-size: 36px;
+                color: inherit;
+                font-weight: 700;
+                margin-right: 40px;
+                a {
+                    color: inherit;
+                    font-size: inherit;
+                    text-decoration: none;
+                }
+            }
+            .itemcontainer{
+                display: flex;
+                align-items: center;
+                margin-left: 30px;
+                span{
+                    padding-left: 8px;
+                }
+            }
+        }
+        .right{
+            .hamburger{
+                width: 28px;
+                height: 22px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                cursor: pointer;
+                span{
+                    width: 100%;
+                    height: 3px;
+                    background-color: $mainColor;
+                    transform-origin: left;
+                    transition: all 1s ease;
+                    will-change: transform;
+                }
+            }
+        }
+    }
+    &.active{
+        background-color: $mainColor;
+        color: #fff;
+        .right{
+            .hamburger{
+                span{
+                    background-color: #fff;
+                    &:first-child{
+                        transform: rotate(45deg);
+                    }
+                    &:nth-child(2){
+                        opacity: 0;
+                    }
+                    &:last-child{
+                        transform: rotate(-45deg);
+                    }
+                }
+            }
+        }
+    }
 }
